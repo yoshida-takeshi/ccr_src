@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>jtalk_src</name>
+  <name>ccr_src</name>
   <version>0.0.0</version>
-  <description>The jtalk_src package</description>
+  <description>The ccr_src package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/jtalk_src</url> -->
+  <!-- <url type="website">http://wiki.ros.org/ccr_src</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->
