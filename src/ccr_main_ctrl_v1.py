@@ -11,6 +11,7 @@ from time import sleep
 sys.path.append("/home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/")
 import write_char_v2 as write_char
 import jtalk_v1 as jtalk
+import ccr_ctrl_v1 as ccr_ctrl
 
 
 class ccr_main_ctrl:
@@ -23,6 +24,7 @@ class ccr_main_ctrl:
 
         self.wc=write_char.write_char(ARM_ON,GRAPH_ON)
         self.jt=jtalk.jtalk()
+        self.cc=ccr_ctrl.ccr_ctrl()
         self.setup_param()
         self.main_loop(CmdFile)
 
@@ -62,6 +64,12 @@ class ccr_main_ctrl:
                 self.cmd_speak_file(CmdWord)
             elif CmdWord[0]=="wait":
                 self.cmd_wait(CmdWord)
+            elif CmdWord[0]=="ccr_move":
+                self.cmd_ccr_move(CmdWord)
+            elif CmdWord[0]=="ccr_left":
+                self.cmd_ccr_left(CmdWord)
+            elif CmdWord[0]=="ccr_right":
+                self.cmd_ccr_right(CmdWord)
             else:
                 print("Error: Unknown command => %s" % CmdLine)
             
@@ -123,6 +131,30 @@ class ccr_main_ctrl:
             print("Error: Invalid args (usage: wait <second>)")
             return
         sleep(int(CmdWord[1]))
+
+    ########################################
+    #CMD:CCR_MOVE
+    def cmd_ccr_move(self,CmdWord):
+        if len(CmdWord)!=2:
+            print("Error: Invalid args (usage: ccr_move <distance>)")
+            return
+        self.cc.ccr_move(float(CmdWord[1]),0)
+
+    ########################################
+    #CMD:CCR_LEFT
+    def cmd_ccr_left(self,CmdWord):
+        if len(CmdWord)!=2:
+            print("Error: Invalid args (usage: ccr_left <distance>)")
+            return
+        self.cc.ccr_move(0,float(CmdWord[1]))
+
+    ########################################
+    #CMD:CCR_ROGHT
+    def cmd_ccr_right(self,CmdWord):
+        if len(CmdWord)!=2:
+            print("Error: Invalid args (usage: ccr_right <distance>)")
+            return
+        self.cc.ccr_move(0,-float(CmdWord[1]))
 
 
         
