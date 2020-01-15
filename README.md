@@ -16,7 +16,7 @@ roslaunch crane_plus_src controller_manager.launch
 roslaunch crane_plus_src start_tilt_controller.launch  
 roslaunch navi_param ccr.launch  
 
-メイン実行
+メイン実行  
 rosrun ccr_src ccr_main_ctrl_v1.py ccr_cmd.txt  
 
 
