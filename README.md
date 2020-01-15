@@ -1,12 +1,4 @@
-# Open JTalk関連パッケージ
-
-## サンプルプログラム(test_jtalk_v1.py)
-`ubuntu% ./test_jtalk_v1.py`  
-  引数なし → 現在時刻を読み上げ
-
-`ubuntu% ./test_jtalk_v1.py sample.txt`  
-  ファイル名指定 → テキストファイルの内容を読み上げ
-
+# ccr制御パッケージ
 
 ## Open JTalk インストールメモ
 #### パッケージインストール
@@ -18,11 +10,13 @@
 `ubuntu% sudo cp -r MMDAgent_Example-1.7/Voice/mei/ /usr/share/hts-voice/`  
 
 
+## 起動手順
+事前準備  
+roslaunch crane_plus_src controller_manager.launch  
+roslaunch crane_plus_src start_tilt_controller.launch  
+roslaunch navi_param ccr.launch  
 
-roslaunch crane_plus_src controller_manager.launch
-roslaunch crane_plus_src start_tilt_controller.launch
-roslaunch navi_param ccr.launch
-
-rosrun ccr_src ccr_main_ctrl_v1.py ccr_cmd.txt
+メイン実行
+rosrun ccr_src ccr_main_ctrl_v1.py ccr_cmd.txt  
 
 
