@@ -16,3 +16,13 @@
 `ubuntu% wget http://sourceforge.net/projects/mmdagent/files/MMDAgent_Example/MMDAgent_Example-1.7/MMDAgent_Example-1.7.zip`  
 `ubuntu% unzip MMDAgent_Example-1.7.zip`  
 `ubuntu% sudo cp -r MMDAgent_Example-1.7/Voice/mei/ /usr/share/hts-voice/`  
+
+
+
+roslaunch crane_plus_src controller_manager.launch
+roslaunch crane_plus_src start_tilt_controller.launch
+roslaunch navi_param ccr.launch
+
+rosrun ccr_src ccr_main_ctrl_v1.py ccr_cmd.txt
+
+
