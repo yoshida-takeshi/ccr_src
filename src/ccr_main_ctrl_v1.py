@@ -9,7 +9,8 @@ import numpy as np
 from time import sleep
 
 sys.path.append("/home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/")
-import write_char_v2 as write_char
+import write_char_v4 as write_char
+import write_char_v3 as write_char3
 import jtalk_v1 as jtalk
 import ccr_ctrl_v1 as ccr_ctrl
 
@@ -23,10 +24,13 @@ class ccr_main_ctrl:
         CmdFile = args[1]
 
         self.wc=write_char.write_char(ARM_ON,GRAPH_ON)
+        self.wc3=write_char3.write_char(ARM_ON,GRAPH_ON) #zantei
         self.jt=jtalk.jtalk()
         self.cc=ccr_ctrl.ccr_ctrl()
+
         self.setup_param()
         self.main_loop(CmdFile)
+
 
     ########################################
     #パラメータ初期設定
@@ -36,6 +40,11 @@ class ccr_main_ctrl:
         self.wc.Rotate=0
         self.y=self.wc.y_Bottom+0.09
         self.x=-self.wc.FontSize/2
+
+        #zantei
+        self.wc3.HeightDown=0.093
+        self.wc3.FontSize=0.05
+        self.wc3.Rotate=0
 
     ########################################
     #メイン処理
@@ -70,6 +79,10 @@ class ccr_main_ctrl:
                 self.cmd_ccr_left(CmdWord)
             elif CmdWord[0]=="ccr_right":
                 self.cmd_ccr_right(CmdWord)
+            elif CmdWord[0]=="write3": #zantei
+                self.cmd_write3(CmdWord)
+            elif CmdWord[0]=="fontsize3": #zantei
+                self.cmd_fontsize3(CmdWord)
             else:
                 print("Error: Unknown command => %s" % CmdLine)
             
@@ -156,6 +169,25 @@ class ccr_main_ctrl:
             return
         self.cc.ccr_move(0,-float(CmdWord[1]))
 
+
+    ########################################
+    #zantei CMD:文字を書く
+    def cmd_write3(self,CmdWord):
+        if len(CmdWord)!=2:
+            print("Error: Invalid args (usage: write <font_file>)")
+            return
+        fontfile=CmdWord[1]
+        data = np.load(fontfile)
+        self.wc3.write_char(data,self.x,self.y)
+        
+
+    ########################################
+    #zantei CMD:FONTSIZE変更
+    def cmd_fontsize3(self,CmdWord):
+        if len(CmdWord)!=2:
+            print("Error: Invalid args (usage: fontsize <font_size[m]>)")
+            return
+        self.wc3.FontSize=float(CmdWord[1])
 
         
 
