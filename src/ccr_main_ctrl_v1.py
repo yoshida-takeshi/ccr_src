@@ -10,7 +10,7 @@ from time import sleep
 
 sys.path.append("/home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/")
 import write_char_v4 as write_char
-import write_char_v3 as write_char3
+import write_char_v2 as write_char3
 import jtalk_v1 as jtalk
 import ccr_ctrl_v1 as ccr_ctrl
 
@@ -19,14 +19,19 @@ class ccr_main_ctrl:
     ########################################
     #INIT
     def __init__(self,args):
-        ARM_ON=False
+        ARM_ON=True
         GRAPH_ON=True
         CmdFile = args[1]
 
+        try:
+            rospy.init_node('ccr_main_ctrl', anonymous=True)
+        except rospy.exceptions.ROSException:
+            print("Information: skip init_node")
+
         self.wc=write_char.write_char(ARM_ON,GRAPH_ON)
         self.wc3=write_char3.write_char(ARM_ON,GRAPH_ON) #zantei
-        self.jt=jtalk.jtalk()
         self.cc=ccr_ctrl.ccr_ctrl()
+        self.jt=jtalk.jtalk()
 
         self.setup_param()
         self.main_loop(CmdFile)
@@ -35,15 +40,18 @@ class ccr_main_ctrl:
     ########################################
     #パラメータ初期設定
     def setup_param(self):
-        self.wc.HeightDown=0.093
-        self.wc.FontSize=0.05
+        #self.wc.HeightDown=0.093
+        #self.wc.FontSize=0.05
         self.wc.Rotate=0
-        self.y=self.wc.y_Bottom+0.09
+        #self.y=self.wc.y_Bottom+0.09
+        #self.x=-self.wc.FontSize/2
+        self.y=self.wc.y_Bottom+0.21
         self.x=-self.wc.FontSize/2
 
+
         #zantei
-        self.wc3.HeightDown=0.093
-        self.wc3.FontSize=0.05
+        #self.wc3.HeightDown=0.093
+        #self.wc3.FontSize=0.05
         self.wc3.Rotate=0
 
     ########################################

@@ -15,7 +15,10 @@ class ccr_ctrl:
     ########################################    
     #INIT
     def __init__(self):
-        rospy.init_node('ccr_ctrl', anonymous=True)
+        try:
+            rospy.init_node('ccr_ctrl', anonymous=True)
+        except rospy.exceptions.ROSException:
+            print("Information: skip init_node")
         self.mode_pub = rospy.Publisher('/mobile_base/command/mode', String, queue_size=1000)
         self.twist_pub = rospy.Publisher('cmd_vel', Twist, queue_size=1000)
         rospy.Subscriber('/mobile_base/event/mode',Byte, self.modeCallback)

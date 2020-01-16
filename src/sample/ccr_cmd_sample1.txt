@@ -2,19 +2,30 @@
 #speak 開始
 #speak_file test.txt
 
-fontsize 0.10
-locate -0.10 0.28
-#write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample1/asa.npy
+#fontsize 0.23
+#fontsize3 0.23
+
+speak ビフォアー
+#fontsize 0.10
+#locate -0.10 0.28
+#write3 /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/i.npy
 #speak あさ
 
-#wait 10
+wait 1
 
-locate 0.00 0.24
-fontsize 0.05
-#write3 /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample1/kusa.npy
+speak アフター
+#locate 0.00 0.24
+#fontsize 0.05
+#write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/i_plus_flag.npy
 #speak くさ
 
 ccr_move -0.1
 ccr_right 1
+ccr_right 1
+#ccr_move 0.2
 
-#speak 終了
+speak 終了
+
+
+####write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/asa.npy
+####write3 /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample1/kusa.npy
