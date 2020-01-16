@@ -1,31 +1,51 @@
-#test
-#speak 開始
-#speak_file test.txt
+speak でもを開始します
 
-#fontsize 0.23
-#fontsize3 0.23
+#speak ビフォアー
+speak 従来ばーじょんです
+write3 /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/i.npy
 
-speak ビフォアー
-#fontsize 0.10
-#locate -0.10 0.28
-#write3 /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/i.npy
-#speak あさ
-
+speak 用紙を交換してください
+wait 5
+speak 3
 wait 1
+speak 2
+wait 1
+speak 1
+wait 1
+speak 0
 
-speak アフター
-#locate 0.00 0.24
-#fontsize 0.05
-#write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/i_plus_flag.npy
-#speak くさ
+#speak アフター
+speak 最新ばーじょんです
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/i_plus_flag.npy
 
+speak 移動します、注意してください
 ccr_move -0.1
 ccr_right 1
 ccr_right 1
 #ccr_move 0.2
 
-speak 終了
 
+speak でも終了です
+#speak 終了
+
+
+
+
+
+
+
+###### DELETE ######
+#speak_file test.txt
+#fontsize 0.23
+#fontsize3 0.23
+#fontsize 0.10
+#locate -0.10 0.28
+
+#locate 0.00 0.24
+#fontsize 0.05
 
 ####write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/asa.npy
 ####write3 /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample1/kusa.npy
+
+#speak あさ
+#speak くさ
