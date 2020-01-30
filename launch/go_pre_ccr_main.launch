@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<launch>
+  
+  <!-- Include main launch file -->
+  <include file="$(find crane_plus_src)/launch/controller_manager.launch">
+  </include>
+  <include file="$(find crane_plus_src)/launch/start_tilt_controller.launch">
+  </include>
+
+  <include file="$(find navi_param)/ccr/ccr.launch">
+  </include>
+
+</launch>
