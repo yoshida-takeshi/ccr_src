@@ -1,6 +1,9 @@
+ccr_button 1
 speak でもを開始します
 speak 用紙を交換してください
+ccr_button 2
 speak 従来ばーじょんです
 speak 最新ばーじょんです
 speak 移動します、注意してください
 speak でもは終了です
+goto 0
