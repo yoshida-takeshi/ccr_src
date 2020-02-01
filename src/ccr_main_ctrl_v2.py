@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 
+CCR_ON=True
 
 import sys
 import re
@@ -9,9 +10,12 @@ import numpy as np
 from time import sleep
 
 sys.path.append("/home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/")
-import write_char_v4 as write_char
+import write_char_v5_1 as write_char
 import jtalk_v1 as jtalk
-import ccr_ctrl_v1 as ccr_ctrl
+try:
+    import ccr_ctrl_v1 as ccr_ctrl
+except:
+    CCR_ON=False
 
 
 class ccr_main_ctrl:
@@ -28,7 +32,8 @@ class ccr_main_ctrl:
             print("Information: skip init_node")
 
         self.wc=write_char.write_char(ARM_ON,GRAPH_ON)
-        self.cc=ccr_ctrl.ccr_ctrl()
+        if CCR_ON==True:
+            self.cc=ccr_ctrl.ccr_ctrl()
         self.jt=jtalk.jtalk()
 
         self.setup_param()
@@ -72,6 +77,8 @@ class ccr_main_ctrl:
                 self.cmd_fontsize(CmdWord)
             elif CmdWord[0]=="locate":
                 self.cmd_locate(CmdWord)
+            elif CmdWord[0]=="refill":
+                self.cmd_refill(CmdWord)
             elif CmdWord[0]=="speak":
                 self.cmd_speak(CmdWord)
             elif CmdWord[0]=="speak_file":
@@ -88,10 +95,6 @@ class ccr_main_ctrl:
                 self.cmd_ccr_button(CmdWord)
             elif CmdWord[0]=="goto":
                 self.cmd_goto(CmdWord)
-            #elif CmdWord[0]=="write3": #zantei
-            #    self.cmd_write3(CmdWord)
-            #elif CmdWord[0]=="fontsize3": #zantei
-            #    self.cmd_fontsize3(CmdWord)
             else:
                 print("Error: Unknown command => %s" % CmdLine)
             
@@ -117,6 +120,14 @@ class ccr_main_ctrl:
             print("Error: Invalid args (usage: fontsize <font_size[m]>)")
             return
         self.wc.FontSize=float(CmdWord[1])
+
+    ########################################
+    #CMD:墨補充
+    def cmd_refill(self,CmdWord):
+        if len(CmdWord)!=3:
+            print("Error: Invalid args (usage: refill <x[m]> <y[m]>)")
+            return
+        self.wc.refill(float(CmdWord[1]),float(CmdWord[2]))
 
 
     ########################################
