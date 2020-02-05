@@ -13,7 +13,7 @@ from ccr_msgs.msg import LEDBoardEvent
 #from datetime import datetime
 
 class ccr_ctrl:
-    ########################################    
+    ########################################
     #INIT
     def __init__(self):
         try:
@@ -30,10 +30,11 @@ class ccr_ctrl:
         self.drive=Drive()
         self.led_board=LEDBoardEvent()
 
-        self.normal_mode()
+        #self.normal_mode()
+        self.manual_mode()
 
 
-    ########################################    
+    ########################################
     #ccr_move
     def ccr_move(self,vel,rad):
         twist=Twist()
@@ -45,7 +46,8 @@ class ccr_ctrl:
         self.twist_pub.publish(twist)
         r.sleep()
         
-    ########################################    
+
+    ########################################
     #wait_button
     def wait_button(self,code):
         r = rospy.Rate(1)
@@ -55,26 +57,40 @@ class ccr_ctrl:
                 break
 
 
-    ########################################    
-    #return normal mode
+    ########################################
+    #change to normal_mode
     def normal_mode(self):
         r = rospy.Rate(1)
-        self.mode=3
-        while (self.mode==3):
+        while (self.mode!=1):
             r.sleep()
             self.mode_pub.publish("normal")
             r.sleep()
 
+    ########################################
+    #change to manual_mode
+    def manual_mode(self):
+        r = rospy.Rate(1)
+        while (self.mode!=2):
+            r.sleep()
+            self.mode_pub.publish("manual")
+            r.sleep()
 
-    ########################################    
+
+    ########################################
     #get mode
     def modeCallback(self, mode):
         self.mode=mode.data
 
-    ########################################    
+    ########################################
     #get led_board
     def led_boardCallback(self, led_board):
         self.led_board=led_board.event
+        if self.led_board&32: #"mainichi" -> normal_mode
+            self.normal_mode()
+        if self.led_board&16: #"yoyaku" -> manual_mode
+            self.manual_mode()
+
+
 
 
 if __name__ == '__main__':
