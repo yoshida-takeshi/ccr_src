@@ -93,6 +93,8 @@ class ccr_main_ctrl:
                 self.cmd_ccr_right(CmdWord)
             elif CmdWord[0]=="ccr_button":
                 self.cmd_ccr_button(CmdWord)
+            elif CmdWord[0]=="ccr_7seg":
+                self.cmd_ccr_7seg(CmdWord)
             elif CmdWord[0]=="goto":
                 self.cmd_goto(CmdWord)
             else:
@@ -196,6 +198,14 @@ class ccr_main_ctrl:
             print("Error: Invalid args (usage: ccr_button <code>)")
             return
         self.cc.wait_button(int(CmdWord[1]))
+
+    ########################################
+    #CMD:CCR_7SEG
+    def cmd_ccr_7seg(self,CmdWord):
+        if len(CmdWord)!=2:
+            print("Error: Invalid args (usage: ccr_7seg <n>)")
+            return
+        self.cc.set_7seg(int(CmdWord[1]))
 
     ########################################
     #CMD:GOTO

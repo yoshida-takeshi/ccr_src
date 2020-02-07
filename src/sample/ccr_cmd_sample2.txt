@@ -1,9 +1,15 @@
 ccr_button 1
+ccr_7seg 0
 speak でもを開始します
+ccr_7seg 1
 speak 用紙を交換してください
 ccr_button 2
+ccr_7seg 2
 speak 従来ばーじょんです
+ccr_7seg 3
 speak 最新ばーじょんです
+ccr_7seg 4
 speak 移動します、注意してください
+ccr_7seg 5
 speak でもは終了です
 goto 0
