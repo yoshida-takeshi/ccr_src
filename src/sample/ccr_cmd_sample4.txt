@@ -1,0 +1,19 @@
+#init
+#fontsize 0.22
+
+#refill 0.00 0.20
+
+#(x,y)=(-self.wc.FontSize/2, self.wc.y_Bottom+0.21)
+#locate -0.11 0.32
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample4/eiji_plus_flag2.npy
+ccr_move 0.1
+ccr_left 1.0
+clear
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample3/i_plus_flag.npy
+ccr_move 0.1
+ccr_left 1.0
+ccr_move 0.1
+ccr_right 1.0
+clear
+
+wait 10
