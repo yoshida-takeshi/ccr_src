@@ -30,33 +30,38 @@ class ccr_ctrl:
 
         rospy.Timer(rospy.Duration(0.1), self.timerCallback)
 
-        r = rospy.Rate(1)
+        r = rospy.Rate(10)
         self.mode=0
         self.drive=Drive()
         self.led_cmd=LEDBoardCommand()
         self.led_board=LEDBoardEvent()
 
-        #self.normal_mode()
-        self.manual_mode()
+        self.normal_mode()
+        #self.manual_mode()
 
 
     ########################################
     #ccr_move
     def ccr_move(self,vel,rad):
         twist=Twist()
-        r = rospy.Rate(1)
+        r = rospy.Rate(10)
+        step=3
 
-        twist.linear.x=vel
-        twist.angular.z=rad
-        r.sleep()
-        self.twist_pub.publish(twist)
-        r.sleep()
+        twist.linear.x=vel/step
+        twist.angular.z=rad/step
+        self.normal_mode()
+        for t in range(10):
+            r.sleep()
+        for i in range(step):
+            self.twist_pub.publish(twist)
+            for t in range(10):
+                r.sleep()
         
 
     ########################################
     #wait_button
     def wait_button(self,code):
-        r = rospy.Rate(100)
+        r = rospy.Rate(10)
         self.led_board=0
         self.led_cmd.cmd2=1 #LED ON
         while(1):
@@ -69,20 +74,26 @@ class ccr_ctrl:
     ########################################
     #change to normal_mode
     def normal_mode(self):
-        r = rospy.Rate(1)
-        while (self.mode!=1):
-            r.sleep()
-            self.mode_pub.publish("normal")
-            r.sleep()
+        r = rospy.Rate(10)
+        if (self.mode!=1):
+            print("wait to normal mode.")
+            while (self.mode!=1):
+                r.sleep()
+                self.mode_pub.publish("normal")
+                r.sleep()
+            print("=> normal mode.")
 
     ########################################
     #change to manual_mode
     def manual_mode(self):
-        r = rospy.Rate(1)
-        while (self.mode!=2):
-            r.sleep()
-            self.mode_pub.publish("manual")
-            r.sleep()
+        r = rospy.Rate(10)
+        if (self.mode!=2):
+            print("wait to manual mode.")
+            while (self.mode!=2):
+                r.sleep()
+                self.mode_pub.publish("manual")
+                r.sleep()
+            print("=> manual mode.")
 
 
     ########################################
@@ -90,8 +101,8 @@ class ccr_ctrl:
     def modeCallback(self, mode):
         self.mode=mode.data
         #LED Indicator
-        if(self.mode==1): self.led_cmd.cmd3=2 #Normal=>FLASH_SLOW
-        if(self.mode==2): self.led_cmd.cmd3=1 #Manual=>ON
+        if(self.mode==1): self.led_cmd.cmd3=1 #Normal=>ON
+        if(self.mode==2): self.led_cmd.cmd3=2 #Manual=>FLASH_SLOW
         if(self.mode==3): self.led_cmd.cmd3=3 #Error=> FLASH_FAST
 
     ########################################
@@ -106,7 +117,7 @@ class ccr_ctrl:
     ########################################
     #set LED
     def set_led(self):
-        r = rospy.Rate(1)
+        r = rospy.Rate(10)
         r.sleep()
         self.led_pub.publish(self.led_cmd)
         r.sleep()
