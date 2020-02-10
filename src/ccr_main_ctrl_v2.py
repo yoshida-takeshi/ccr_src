@@ -79,6 +79,8 @@ class ccr_main_ctrl:
                 self.cmd_locate(CmdWord)
             elif CmdWord[0]=="refill":
                 self.cmd_refill(CmdWord)
+            elif CmdWord[0]=="clear":
+                self.cmd_clear(CmdWord)
             elif CmdWord[0]=="speak":
                 self.cmd_speak(CmdWord)
             elif CmdWord[0]=="speak_file":
@@ -130,6 +132,14 @@ class ccr_main_ctrl:
             print("Error: Invalid args (usage: refill <x[m]> <y[m]>)")
             return
         self.wc.refill(float(CmdWord[1]),float(CmdWord[2]))
+
+    ########################################
+    #CMD:GRAPH CLEAR
+    def cmd_clear(self,CmdWord):
+        if len(CmdWord)!=1:
+            print("Error: Invalid args (usage: clear)")
+            return
+        self.wc.graph_clear()
 
 
     ########################################
