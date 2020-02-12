@@ -13,8 +13,11 @@ from cv_bridge import CvBridge, CvBridgeError
 class cam_Ctrl:
 
     def __init__(self):
+        try:
+            rospy.init_node('control_rulo', anonymous=True)
+        except rospy.exceptions.ROSException:
+            print("Information: skip init_node")
 
-        rospy.init_node('control_rulo', anonymous=True)
         self.twist_pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1000)
         #カメラ画像を取得するたびcallback関数を呼び出す
         #self._image_sub = rospy.Subscriber('/usb_cam/image_raw', Image, self.imageCallback)
