@@ -10,7 +10,7 @@ import numpy as np
 from time import sleep
 
 sys.path.append("/home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/")
-import write_char_v5_1 as write_char
+import write_char_v6 as write_char
 import jtalk_v1 as jtalk
 try:
     import ccr_ctrl_v1 as ccr_ctrl
