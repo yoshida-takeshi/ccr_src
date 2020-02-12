@@ -12,6 +12,7 @@ from time import sleep
 sys.path.append("/home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/")
 import write_char_v6 as write_char
 import jtalk_v1 as jtalk
+import cam_rulo_v3 as cam_Ctrl
 try:
     import ccr_ctrl_v1 as ccr_ctrl
 except:
@@ -35,6 +36,7 @@ class ccr_main_ctrl:
         if CCR_ON==True:
             self.cc=ccr_ctrl.ccr_ctrl()
         self.jt=jtalk.jtalk()
+        self.ct=cam_Ctrl.cam_Ctrl()
 
         self.setup_param()
         self.main_loop(CmdFile)
@@ -89,6 +91,8 @@ class ccr_main_ctrl:
                 self.cmd_wait(CmdWord)
             elif CmdWord[0]=="ccr_move":
                 self.cmd_ccr_move(CmdWord)
+            elif CmdWord[0]=="ccr_move_line":
+                self.cmd_ccr_move_line(CmdWord)
             elif CmdWord[0]=="ccr_left":
                 self.cmd_ccr_left(CmdWord)
             elif CmdWord[0]=="ccr_right":
@@ -186,6 +190,14 @@ class ccr_main_ctrl:
         self.cc.ccr_move(float(CmdWord[1]),0)
 
     ########################################
+    #CMD:CCR_MOVE_LINE
+    def cmd_ccr_move_line(self,CmdWord):
+        if len(CmdWord)!=3:
+            print("Error: Invalid args (usage: ccr_move_line <distance>)")
+            return
+        self.ct.move_color(CmdWord[1],CmdWord[2])
+
+    ########################################
     #CMD:CCR_LEFT
     def cmd_ccr_left(self,CmdWord):
         if len(CmdWord)!=2:
@@ -216,6 +228,7 @@ class ccr_main_ctrl:
             print("Error: Invalid args (usage: ccr_7seg <n>)")
             return
         self.cc.set_7seg(int(CmdWord[1]))
+
 
     ########################################
     #CMD:GOTO
