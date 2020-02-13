@@ -46,8 +46,8 @@ class cam_Ctrl:
             HIGH_COLOR = np.array([140, 255, 255])
         elif color == "green":
             # ここでは青色を抽出するので120±20を閾値とした
-            LOW_COLOR = np.array([100, 75, 75])
-            HIGH_COLOR = np.array([140, 255, 255])
+            LOW_COLOR = np.array([75, 75, 75])
+            HIGH_COLOR = np.array([99, 255, 255])
         elif color == "yellow":
             # ここでは青色を抽出するので120±20を閾値とした
             LOW_COLOR = np.array([100, 75, 75])
@@ -71,6 +71,8 @@ class cam_Ctrl:
         # webカメラを扱うオブジェクトを取得
         cap = cv2.VideoCapture(0)
 
+        r=rospy.Rate(10)
+
         while True:
             ret,frame = cap.read()
             #r = rospy.Rate(20)
@@ -85,24 +87,6 @@ class cam_Ctrl:
             stop_line = h/2
         	#停止位置マージン
             stop_margin = 20
-		
-            cv2.line(
-                    frame, 
-                    (0, stop_line-stop_margin), 
-                    (w, stop_line-stop_margin), 
-                    (0, 0, 255), 
-                    thickness=1, 
-                    lineType=cv2.LINE_4
-                    )
-		
-            cv2.line(
-                    frame, 
-                    (0, stop_line+stop_margin), 
-                    (w, stop_line+stop_margin), 
-                    (0, 0, 255), 
-                    thickness=1, 
-                    lineType=cv2.LINE_4
-                    )
 
         	# 位置を抽出
             pos = self.find_specific_color(
@@ -116,6 +100,7 @@ class cam_Ctrl:
                 # 抽出した座標に丸を描く
                 cv2.circle(frame,pos,10,(0,0,255),-1)
 
+
                 if (stop_line + stop_margin) < pos[1] :
                     twist = Twist()
                     twist.linear.x = -0.02
@@ -125,6 +110,11 @@ class cam_Ctrl:
                     twist.linear.x = 0.02
                     self.twist_pub.publish(twist)
                 else:
+                    twist = Twist()
+                    twist.linear.x = 0
+                    for i in range(100):
+                    	self.twist_pub.publish(twist)
+
                     print("finish")			
                     break
             else:
@@ -137,8 +127,9 @@ class cam_Ctrl:
                     twist.linear.x = 0.10
                 self.twist_pub.publish(twist)
 
+            #r.sleep()
             # 画面に表示する
-            cv2.imshow('frame',frame)
+            #cv2.imshow('frame',frame)
 
         cv2.destroyAllWindows()
     
