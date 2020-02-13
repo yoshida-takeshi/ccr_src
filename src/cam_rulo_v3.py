@@ -46,20 +46,20 @@ class cam_Ctrl:
             HIGH_COLOR = np.array([140, 255, 255])
         elif color == "green":
             # ここでは青色を抽出するので120±20を閾値とした
-            LOW_COLOR = np.array([75, 75, 75])
-            HIGH_COLOR = np.array([99, 255, 255])
+            LOW_COLOR = np.array([40, 75, 75])
+            HIGH_COLOR = np.array([80, 255, 255])
         elif color == "yellow":
             # ここでは青色を抽出するので120±20を閾値とした
-            LOW_COLOR = np.array([100, 75, 75])
-            HIGH_COLOR = np.array([140, 255, 255])
+            LOW_COLOR = np.array([72, 75, 75])
+            HIGH_COLOR = np.array([112, 255, 255])
         elif color == "black":
             # ここでは青色を抽出するので120±20を閾値とした
-            LOW_COLOR = np.array([100, 75, 75])
-            HIGH_COLOR = np.array([140, 255, 255])
+            LOW_COLOR = np.array([0, 0, 0])
+            HIGH_COLOR = np.array([20, 20, 20])
         elif color == "white":
             # ここでは青色を抽出するので120±20を閾値とした
-            LOW_COLOR = np.array([100, 75, 75])
-            HIGH_COLOR = np.array([140, 255, 255])
+            LOW_COLOR = np.array([0, 0, 200])
+            HIGH_COLOR = np.array([20, 20, 255])
         else:
             # ここでは青色を抽出するので120±20を閾値とした
             LOW_COLOR = np.array([100, 75, 75])
