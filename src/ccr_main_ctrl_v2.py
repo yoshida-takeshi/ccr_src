@@ -89,6 +89,8 @@ class ccr_main_ctrl:
                 self.cmd_speak_file(CmdWord)
             elif CmdWord[0]=="wait":
                 self.cmd_wait(CmdWord)
+            elif CmdWord[0]=="wait_enter":
+                self.cmd_wait_enter(CmdWord)
             elif CmdWord[0]=="ccr_move":
                 self.cmd_ccr_move(CmdWord)
             elif CmdWord[0]=="ccr_move_line":
@@ -180,6 +182,14 @@ class ccr_main_ctrl:
             print("Error: Invalid args (usage: wait <second>)")
             return
         sleep(int(CmdWord[1]))
+
+    ########################################
+    #CMD:WAIT_ENTER
+    def cmd_wait_enter(self,CmdWord):
+        if len(CmdWord)!=1:
+            print("Error: Invalid args (usage: wait_enter)")
+            return
+        key = raw_input('Please enter.')
 
     ########################################
     #CMD:CCR_MOVE
