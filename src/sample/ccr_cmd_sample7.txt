@@ -41,7 +41,6 @@ refill 0.00 0.20
 wait 2
 
 #三文字目「字」
-ccr_move 0.1
 ccr_move_line forward yellow
 wait 2
 speak じ
@@ -68,8 +67,11 @@ wait 2
 ccr_move -0.2
 ccr_move_line back green
 wait 1
-speak えいじはちほう
-wait 3
+speak えい
+speak じ
+speak はち
+speak ほう
+wait 1
 speak おしまいです
 wait 1
 speak ごらんいただき
