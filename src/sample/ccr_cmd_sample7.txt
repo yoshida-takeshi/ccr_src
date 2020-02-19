@@ -41,7 +41,8 @@ refill 0.00 0.20
 wait 5
 
 #三文字目「字」
-ccr_move_line forward blue
+ccr_move 0.1
+ccr_move_line forward green
 wait 5
 speak じ
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ji_004_plus_flag.npy
@@ -49,13 +50,16 @@ clear
 wait 5
 
 #墨補充
+cce_move -0.2
 ccr_move_line back green
 wait 5
 refill 0.00 0.20
 wait 5
 
 #四文字目「永」
-ccr_move_line forward blue
+ccr_move_line forward red
+ccr_move 0.1
+ccr_move_line forward red
 wait 5
 speak えい
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ei_002_plus_flag.npy
@@ -63,6 +67,8 @@ clear
 wait 5
 
 #おしまい
+ccr_move_line back green
+ccr_move -0.2
 ccr_move_line back green
 wait 1
 speak えいじはちほう
