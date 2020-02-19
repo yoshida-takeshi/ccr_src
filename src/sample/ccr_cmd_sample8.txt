@@ -1,7 +1,6 @@
 #テープ同一色
-init
 
-wait_enter
+#wait_enter
 
 fontsize 0.22
 
@@ -12,91 +11,125 @@ wait 1
 speak かつもくせよ
 wait 1
 
+ccr_move_line forward blue
+wait 3
 refill 0.00 0.20
 
 #一文字目「法」
-ccr_move 0.1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-wait 2
+wait 3
 speak ほう
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ho_001_plus_flag.npy
 clear
-wait 2
+wait 3
 
 #墨補充
-ccr_move -0.1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-wait 2
+wait 3
 refill 0.00 0.20
 wait 5
 
 #二文字目「八」
-ccr_move 0.1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-ccr_move 0.1
+wait 1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-wait 2
+wait 3
 speak はち
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/hachi_001_plus_flag.npy
 clear
-wait 2
+wait 3
 
 #墨補充
-ccr_move -0.1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-ccr_move -0.1
+wait 1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-wait 2
+wait 3
 refill 0.00 0.20
-wait 2
+wait 5
 
 #三文字目「字」
-ccr_move 0.1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-ccr_move 0.1
+wait 1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-ccr_move 0.1
+wait 1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-wait 2
+wait 3
 speak じ
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ji_004_plus_flag.npy
 clear
-wait 2
+wait 3
 
 #墨補充
-ccr_move -0.1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-ccr_move -0.1
+wait 1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-ccr_move -0.1
+wait 1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-wait 2
+wait 3
 refill 0.00 0.20
 wait 5
 
 #四文字目「永」
-ccr_move 0.1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-ccr_move 0.1
+wait 1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-ccr_move 0.1
+wait 1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-ccr_move 0.1
+wait 1
+ccr_move 0.08
+wait 1
 ccr_move_line forward blue
-wait 2
+wait 3
 speak えい
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ei_002_plus_flag.npy
 clear
-wait 2
+wait 3
 
 #おしまい
-ccr_move -0.1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-ccr_move -0.1
+wait 1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-ccr_move -0.1
+wait 1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
-ccr_move -0.1
+wait 1
+ccr_move -0.08
+wait 1
 ccr_move_line back blue
 wait 1
 speak えい
@@ -110,7 +143,7 @@ speak ごらんいただき
 wait 1
 speak ありがとうございました
 
-goto 2
+#goto 2
 
 
 #(x,y)=(-self.wc.FontSize/2, self.wc.y_Bottom+0.21)
