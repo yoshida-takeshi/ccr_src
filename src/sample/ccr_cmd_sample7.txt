@@ -14,60 +14,57 @@ wait 1
 
 #一文字目「法」
 ccr_move_line forward red
-wait 5
+wait 2
 speak ほう
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ho_001_plus_flag.npy
 clear
-wait 5
+wait 2
 
 #墨補充
 ccr_move_line back green
-wait 5
+wait 2
 refill 0.00 0.20
 wait 5
 
 #二文字目「八」
 ccr_move_line forward blue
-wait 5
+wait 2
 speak はち
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/hachi_001_plus_flag.npy
 clear
-wait 5
+wait 2
 
 #墨補充
 ccr_move_line back green
-wait 5
+wait 2
 refill 0.00 0.20
-wait 5
+wait 2
 
 #三文字目「字」
 ccr_move 0.1
-ccr_move_line forward green
-wait 5
+ccr_move_line forward yellow
+wait 2
 speak じ
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ji_004_plus_flag.npy
 clear
-wait 5
+wait 2
 
 #墨補充
-cce_move -0.2
 ccr_move_line back green
-wait 5
+wait 2
 refill 0.00 0.20
 wait 5
 
 #四文字目「永」
-ccr_move_line forward red
 ccr_move 0.1
-ccr_move_line forward red
-wait 5
+ccr_move_line forward green
+wait 2
 speak えい
 write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ei_002_plus_flag.npy
 clear
-wait 5
+wait 2
 
 #おしまい
-ccr_move_line back green
 ccr_move -0.2
 ccr_move_line back green
 wait 1
