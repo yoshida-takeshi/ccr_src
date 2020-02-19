@@ -12,7 +12,7 @@ from time import sleep
 sys.path.append("/home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/")
 import write_char_v6 as write_char
 import jtalk_v1 as jtalk
-import cam_rulo_v3 as cam_Ctrl
+import cam_rulo_v4 as cam_Ctrl
 try:
     import ccr_ctrl_v1 as ccr_ctrl
 except:
