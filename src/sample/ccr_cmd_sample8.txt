@@ -1,1 +1,117 @@
+#テープ同一色
+init
 
+wait_enter
+
+fontsize 0.22
+
+speak かきぞめ
+wait 1
+speak かいし
+wait 1
+speak かつもくせよ
+wait 1
+
+refill 0.00 0.20
+
+#一文字目「法」
+ccr_move 0.1
+ccr_move_line forward blue
+wait 2
+speak ほう
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ho_001_plus_flag.npy
+clear
+wait 2
+
+#墨補充
+ccr_move -0.1
+ccr_move_line back blue
+wait 2
+refill 0.00 0.20
+wait 5
+
+#二文字目「八」
+ccr_move 0.1
+ccr_move_line forward blue
+ccr_move 0.1
+ccr_move_line forward blue
+wait 2
+speak はち
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/hachi_001_plus_flag.npy
+clear
+wait 2
+
+#墨補充
+ccr_move -0.1
+ccr_move_line back blue
+ccr_move -0.1
+ccr_move_line back blue
+wait 2
+refill 0.00 0.20
+wait 2
+
+#三文字目「字」
+ccr_move 0.1
+ccr_move_line forward blue
+ccr_move 0.1
+ccr_move_line forward blue
+ccr_move 0.1
+ccr_move_line forward blue
+wait 2
+speak じ
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ji_004_plus_flag.npy
+clear
+wait 2
+
+#墨補充
+ccr_move -0.1
+ccr_move_line back blue
+ccr_move -0.1
+ccr_move_line back blue
+ccr_move -0.1
+ccr_move_line back blue
+wait 2
+refill 0.00 0.20
+wait 5
+
+#四文字目「永」
+ccr_move 0.1
+ccr_move_line forward blue
+ccr_move 0.1
+ccr_move_line forward blue
+ccr_move 0.1
+ccr_move_line forward blue
+ccr_move 0.1
+ccr_move_line forward blue
+wait 2
+speak えい
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ei_002_plus_flag.npy
+clear
+wait 2
+
+#おしまい
+ccr_move -0.1
+ccr_move_line back blue
+ccr_move -0.1
+ccr_move_line back blue
+ccr_move -0.1
+ccr_move_line back blue
+ccr_move -0.1
+ccr_move_line back blue
+wait 1
+speak えい
+speak じ
+speak はち
+speak ほう
+wait 1
+speak おしまいです
+wait 1
+speak ごらんいただき
+wait 1
+speak ありがとうございました
+
+goto 2
+
+
+#(x,y)=(-self.wc.FontSize/2, self.wc.y_Bottom+0.21)
+#locate -0.11 0.32
