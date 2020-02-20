@@ -40,8 +40,10 @@ class cam_Ctrl:
             HIGH_COLOR = np.array([140, 255, 255])
         elif color == "red":
             # ここでは赤色を抽出する
-            LOW_COLOR = np.array([150, 75, 75])
-            HIGH_COLOR = np.array([180, 255, 255])
+            #LOW_COLOR = np.array([150, 75, 75])
+            #HIGH_COLOR = np.array([180, 255, 255])
+            LOW_COLOR = np.array([0, 75, 75])
+            HIGH_COLOR = np.array([10, 255, 255])
         elif color == "green":
             # ここでは緑色を抽出する
             LOW_COLOR = np.array([70, 70, 70])
@@ -68,17 +70,19 @@ class cam_Ctrl:
         AREA_RATIO_THRESHOLD = 0.005
         # webカメラを扱うオブジェクトを取得
         cap = cv2.VideoCapture(0)
+        #cap = self.adjust(cap,2.0, 0.0)
 
         #r=rospy.Rate(10)
 
         while True:
             ret,frame = cap.read()
+            frame = self.adjust(frame,alpha=2.0, beta=0.0)
             #r = rospy.Rate(20)
 
             if ret is False:
                 print("cannot read image")
                 continue
-		
+
             #画像サイズ
             h,w,c = frame.shape
         	#停止位置
@@ -155,6 +159,11 @@ class cam_Ctrl:
             x = int(result["m10"]/result["m00"])
             y = int(result["m01"]/result["m00"])
             return (x,y)
+
+    def adjust(self, img, alpha=1.0, beta=0.0):
+        dst=alpha*img+beta
+        return np.clip(dst,0,255).astype(np.uint8)
+
 
  
 if __name__ == '__main__':

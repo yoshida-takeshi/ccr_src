@@ -15,15 +15,34 @@ while(1):
 
     # Take each frame
     _, frame = cap.read()
-    frame=adjust(frame,alpha=1.0, beta=0.0)
+    #frame=adjust(frame,alpha=2.0, beta=0.0)
 
     # Convert BGR to HSV
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     # define range of blue color in HSV
-    #blue
-    lower_blue = np.array([110,50,50])
-    upper_blue = np.array([130,255,255])
+    #pink
+    #lower_blue = np.array([150,75,75])
+    #upper_blue = np.array([180,255,255])
+
+    #aka
+    #lower_blue = np.array([150,50,30])
+    #upper_blue = np.array([180,255,255])
+    #lower_blue = np.array([0,75,75])
+    #upper_blue = np.array([10,255,255])
+
+    #kiro
+    #lower_blue = np.array([10,75,75])
+    #upper_blue = np.array([40,255,255])
+
+    #midori
+    #lower_blue = np.array([70,70,70])
+    #upper_blue = np.array([100,255,255])
+
+    #ao
+    lower_blue = np.array([110,75,75])
+    upper_blue = np.array([140,255,255])
+
     #black
     #lower_blue = np.array([0  ,50  ,0])
     #upper_blue = np.array([255,255,10])
