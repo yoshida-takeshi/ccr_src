@@ -20,7 +20,7 @@ wait 5
 ccr_move_line forward red
 wait 3
 speak ほう
-write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ho_001_plus_flag.npy
+#write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ho_001_plus_flag.npy
 clear
 wait 3
 
@@ -31,11 +31,10 @@ refill 0.00 0.20
 wait 5
 
 #二文字目「八」
-ccr_move 0.1
 ccr_move_line forward blue
 wait 3
 speak はち
-write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/hachi_001_plus_flag.npy
+#write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/hachi_001_plus_flag.npy
 clear
 wait 3
 
@@ -46,11 +45,10 @@ refill 0.00 0.20
 wait 5
 
 #三文字目「字」
-ccr_move 0.1
 ccr_move_line forward yellow
 wait 3
 speak じ
-write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ji_004_plus_flag.npy
+#write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ji_004_plus_flag.npy
 clear
 wait 5
 
@@ -65,7 +63,7 @@ ccr_move 0.1
 ccr_move_line forward green
 wait 3
 speak えい
-write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ei_003_plus_flag.npy
+#write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ei_003_plus_flag.npy
 clear
 wait 3
 
@@ -85,7 +83,7 @@ speak ごらんいただき
 wait 1
 speak ありがとうございました
 
-goto 0
+goto 2
 
 
 #(x,y)=(-self.wc.FontSize/2, self.wc.y_Bottom+0.21)
