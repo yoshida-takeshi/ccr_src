@@ -1,0 +1,48 @@
+#ccr_button 1
+#wait_enter
+
+fontsize 0.22
+
+########
+ccr_button 1
+clear
+speak えい
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ei_003_plus_flag.npy
+
+########
+ccr_button 1
+clear
+speak じ
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ji_004_plus_flag.npy
+
+########
+ccr_button 1
+clear
+speak はち
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/hachi_001_plus_flag.npy
+
+########
+ccr_button 1
+clear
+speak ほう
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample5/ho_001_plus_flag.npy
+
+########
+ccr_button 1
+clear
+speak 富士山
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample1/fujisan_plus_flag.npy
+
+########
+ccr_button 1
+clear
+speak あさ
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample1/asa_plus_flag.npy
+
+########
+ccr_button 1
+clear
+speak くさ
+write /home/ubuntu/ros_groupE_ws/src/crane_plus_src/src/fontdata/sample1/kusa_plus_flag.npy
+
+goto 0
